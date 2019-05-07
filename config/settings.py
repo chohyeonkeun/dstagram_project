@@ -25,7 +25,7 @@ SECRET_KEY = 'bbo=@$-uawpm--w!6hr*q#t0mz*h26%@%wz@202ae%f&46yxif'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['.pythonanywhere', 'localhost', '127.0.0.1'] # 나중에 헤로크 만든거 보고, 어플리케이션 주소 설정하면 된다.
+ALLOWED_HOSTS = ['.pythonanywhere.com', 'localhost', '127.0.0.1'] # 나중에 헤로크 만든거 보고, 어플리케이션 주소 설정하면 된다.
 
 
 # Application definition
