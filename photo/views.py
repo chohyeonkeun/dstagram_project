@@ -123,7 +123,7 @@ class PhotoLike(View):
             #1. 어떤 포스팅?
             # url : www.naver.com/blog/like/?photo_id=1
             # request.GET.get('photo_id')
-            # 단url : www.naver.com/blog/like/1/
+            # url : www.naver.com/blog/like/1/
             # path('blog/like/<int:photo_id>/'
             # kwargs['photo_id']
             # 2. 누가?

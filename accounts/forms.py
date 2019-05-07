@@ -6,12 +6,10 @@ from django.contrib.auth.models import User
 
 from django import forms
 
-import requests
-
 class SignUpForm(forms.ModelForm):
-
     password = forms.CharField(label="Password", widget=forms.PasswordInput)
     password2 = forms.CharField(label="Repeat Password", widget=forms.PasswordInput)
+
     class Meta:
         model = User
         # fields 에는 해당 모델에 대해 입력받을 필드들을 나열한다.
@@ -20,7 +18,7 @@ class SignUpForm(forms.ModelForm):
         fields = ['username', 'password', 'password2', 'first_name', 'last_name', 'email']
         # fields = ' all '
 
-        # Todo : 필드의 기본값, Placeholder 설정법, css Class 설정법법
+        # Todo : 필드의 기본값, Placeholder 설정법, css Class 설정법
         # Todo : 커스텀 필드 만드는 법
 
     def clean_password2(self):

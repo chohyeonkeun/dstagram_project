@@ -76,6 +76,7 @@ def signup(request):
         # Todo : form 객체를 만들어서 전달
         signup_form = SignUpForm()
         # context_values = {'form':signup_form}
+        # 템플릿 연동 순
         # 1. 템플릿 불러오기
         # 2. 템플릿 렌더링하기
         # 3. HTTP Response하기
@@ -84,7 +85,7 @@ def signup(request):
 # class UserFollow(View):
 #     def get(self, request, *args, **kwargs):
 #         if not request.user.is_authenticated:
-#             return HttpResponseRedirect('/accounts/signin')
+#             r서eturn HttpResponseRedirect('/accounts/signin')
 #         else:
 #             user = request.user
 #             follow = Follow.objects.filter(me=user)
