@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col"></div>
+    <div class="col-6">
+        <table class="table">
+            <tbody>
+            {% for object in object_list %}
+                {% for following in object.following.all %}
+                    {% if user == following.me  %}
+                    <tr>
+                        <td>{{following.you}}</td>
+                        <td>{{follwing.you.firstname}} {{follower.you.lastname}}</td>
+                        <td><a href="" class="btn btn-xs btn-outline-success">Following</a></td>
+                    </tr>
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="col"></div>
+</div>
+{% endblock %}

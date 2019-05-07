@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Photo Update
+{% endblock %}
+
+{% block content %}
+        <div class="col-6">
+        {% for object in object_list %}
+            {% if user in object.saved.all %}
+            <div class="card" style="margin-top:2em;">
+                <div class="card-header">
+                    {{object.author.username}}
+                </div>
+                <img src="{{object.image.url}}" class="card-img-top">
+                {% if object.text %}
+                <div class="card-body">
+                    <p class="card-text"> {{object.text}} </p>
+                    <p class="card-text"><small class="text-muted"> Last updated {{object.updated}} </small></p>
+                </div>
+                {% endif %}
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <a href="{% url 'photo:like' object.id %}" class="float-left btn-like
+                        {% if user in object.like.all %}active{% endif %}">Like</a>
+                        <a href="{% url 'photo:saved' object.id %}" class="float-right btn-save
+                        {% if user in object.saved.all %}active{% endif %}">Save</a>
+                    </li>
+                </ul>
+                <div class="card-body">
+                    <a href="{{object.get_absolute_url}}" class="card-link">댓글 달기</a>
+                </div>
+            </div>
+            {% endif %}
+        {% endfor %}
+        </div>
+{% endblock %}
