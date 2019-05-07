@@ -51,7 +51,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    # 'whitenoise.middleware.WhiteNoiseMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -85,8 +85,8 @@ DATABASES = {
     }
 }
 
-# import dj_database_url
-# DATABASES['default'].update(dj_database_url.config(conn_max_age=500))
+import dj_database_url
+DATABASES['default'].update(dj_database_url.config(conn_max_age=500))
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
@@ -125,7 +125,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
-# STATIC_ROOT = os.path.join(BASE_DIR, 'staticsfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticsfiles')
 
 MEDIA_URL = '/media/'  # url 경로로 /media/ 설정
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')   # url 경로로 media 설정한게 아니라 media 폴더 생성
