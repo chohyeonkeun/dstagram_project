@@ -25,7 +25,7 @@ SECRET_KEY = 'bbo=@$-uawpm--w!6hr*q#t0mz*h26%@%wz@202ae%f&46yxif'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['.pythonanywhere.com', 'localhost', '127.0.0.1'] # 나중에 헤로크 만든거 보고, 어플리케이션 주소 설정하면 된다.
+ALLOWED_HOSTS = ['.pythonanywhere.com', 'localhost', '127.0.0.1', '*'] # 나중에 헤로크 만든거 보고, 어플리케이션 주소 설정하면 된다.
 
 
 # Application definition
@@ -123,6 +123,27 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
+"""
+static
+media
+두가지 파일을 올려야 한다.
+아마존에 올릴려면 아래 두가지가 필요하다.
+boto3 : AmazonS3를 사용할 수 있게 하는 역할
+django-storages : 장고 프로젝트에서 특정 storage를 사용할 수 있게 하는 역할
+"""
+# AWS_ACCESS_KEY_ID = 'AKIAZR3IWTCZXUMC6I7D'
+# AWS_SECRET_ACCESS_KEY = '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'
+# AWS_REGION = 'ap-northeast-2'
+# AWS_STORAGE_BUCKET_NAME = 'wpsschool'
+# AWS_S3_CUSTOM_DOMAIN = '%s.s3.%s.amazonaws.com' % (AWS_STORAGE_BUCKET_NAME,AWS_REGION)
+# AWS_S3_OBJECT_PARAMETERS = {
+#     'CacheControl': 'max-age=86400',
+# }
+# AWS_DEFAULT_ACL = 'public-read'
+# AWS_LOCATION = 'static'
+#
+# STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
+# STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticsfiles')

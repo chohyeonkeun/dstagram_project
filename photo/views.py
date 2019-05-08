@@ -128,11 +128,22 @@ class PhotoLike(View):
             # kwargs['photo_id']
             # 2. 누가?
             '''
-            id  photo_id  like
-            1       1      A
-            2       1      B
-            3       2      B
-            4       2      A
+            user
+            id username ....
+            1   admin
+            2   baepeu
+            
+            photo
+            id  author_id ...
+            1    1
+            2    1
+            
+            like
+            id  photo_id  user_id
+            1       1      1
+            2       1      2
+            3       2      1
+            4       2      2
             '''
             if 'photo_id' in kwargs:
                 photo_id = kwargs['photo_id']
@@ -147,7 +158,7 @@ class PhotoLike(View):
             return HttpResponseRedirect(path)
         # LOGIN_URL = reverse_lazy('accounts:signin')
 
-
+# 함수형 뷰일 때는 def photosaved(request,photo_id)
 class PhotoSaved(View):
     def get(self, request, *args, **kwargs):
         if not request.user.is_authenticated:
