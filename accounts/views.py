@@ -25,7 +25,7 @@ import requests
 
 2. 팔로우 정보를 저장하는 뷰
 '''
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 
 from django.views.generic.list import ListView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
@@ -35,6 +35,8 @@ from django.http import HttpResponseRedirect
 from django.http import HttpResponseForbidden
 from .models import Follow
 from .forms import SignUpForm
+
+User = get_user_model()
 
 class UserList(ListView):
     model = User
@@ -107,5 +109,3 @@ class UserFollower(View):
 class UserFollowing(View):
     def get(self, request, *args, **kwargs):
         pass
-
-

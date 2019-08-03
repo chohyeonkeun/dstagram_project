@@ -2,6 +2,10 @@ from .views import *
 
 from django.urls import path
 
+from django.views.static import serve
+
+from django.urls import re_path
+
 app_name = 'photo'
 
 urlpatterns = [

@@ -22,6 +22,8 @@ from django.urls import reverse
 # settings.AUTH_USER_MODEL
 from django.contrib.auth import get_user_model
 
+
+# models.Model : ORM 관련 기능을 다 가지고 있다.
 class Photo(models.Model):
     author = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, related_name='photos')   # ForeignKey(User, 삭제 시 동작, 연관 이름)
     # models.ForeignKey(get_user_model(), )  --> 확장할 거라면 요렇게 쓰는 걸 추천
@@ -32,13 +34,13 @@ class Photo(models.Model):
     # 내 프로필 페이지 - 내가 올린 사진만 뜬다.
     # pillow --> python에서 image를 올리기 위한 라이브러리리
     text = models.TextField(blank=True)
-    image = models.ImageField(upload_to='timeline_photo/%Y/%m.%d')   # %Y/%m/%d --> 자동으로 연/월/일 생성해준다.
+    image = models.ImageField(upload_to='timeline_photo/%Y/%m/%d')   # %Y/%m/%d --> 자동으로 연/월/일 생성해준다.
     # upload_to 는 함수를 사용해서 폴더를 동적으로 설정할 수 있다.
     created = models.DateTimeField(auto_now_add=True)   # 처음 생성할 때만 지정
     updated = models.DateTimeField(auto_now=True)   # 처음 생성할때, 수정할때마다 지정
 
-    like = models.ManyToManyField(get_user_model(), related_name='like_post')
-    saved = models.ManyToManyField(get_user_model(), related_name='saved_post')
+    like = models.ManyToManyField(get_user_model(), related_name='like_post', blank=True, null=True)
+    saved = models.ManyToManyField(get_user_model(), related_name='saved_post', blank=True, null=True)
 
     class Meta:
         ordering = ['-created']
@@ -46,3 +48,18 @@ class Photo(models.Model):
     def get_absolute_url(self):
         # detail/<int:pk>/ 여기에 들어갈 값을 self.id로 던져준다.
         return reverse('photo:detail', args=[self.id])
+
+    # save를 실행하고 나면, DB에 레코드 생성
+    # save하기전에 혹은 하고나서 뭘 하고 싶을때,
+    def save(self, force_insert=False, force_update=False, using=None, update_fields=None):
+        # before
+        super(Photo,self).save(...)
+        # after
+
+    # delete를 실행하고나면 DB에서 레코드 제거
+    # save하기전에 혹은 하고나서 뭘 하고 싶을때,
+    def delete(self, using=None, keep_parents=False):
+        # before
+        super(Photo,self).delete(...)
+        # after
+

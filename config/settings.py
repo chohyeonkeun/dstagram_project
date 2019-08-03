@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'bbo=@$-uawpm--w!6hr*q#t0mz*h26%@%wz@202ae%f&46yxif'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['.pythonanywhere.com', 'localhost', '127.0.0.1', '*'] # 나중에 헤로크 만든거 보고, 어플리케이션 주소 설정하면 된다.
 
@@ -41,6 +41,9 @@ INSTALLED_APPS = [
     'photo',
     'disqus',
     'django.contrib.sites',
+    'storages',
+    'debug_toolbar',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [
@@ -52,6 +55,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -131,22 +135,25 @@ media
 boto3 : AmazonS3를 사용할 수 있게 하는 역할
 django-storages : 장고 프로젝트에서 특정 storage를 사용할 수 있게 하는 역할
 """
-# AWS_ACCESS_KEY_ID = 'AKIAZR3IWTCZXUMC6I7D'
-# AWS_SECRET_ACCESS_KEY = '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'
+# AWS_ACCESS_KEY_ID = 'aws_info['id']'
+# AWS_SECRET_ACCESS_KEY = 'aws_info['key']'
 # AWS_REGION = 'ap-northeast-2'
-# AWS_STORAGE_BUCKET_NAME = 'wpsschool'
+# AWS_STORAGE_BUCKET_NAME = 'media.wpsshool.site'
+# AWS_S3_CUSTOM_DOMAIN = '%s' % AWS_STORAGE_BUCKET_NAME
 # AWS_S3_CUSTOM_DOMAIN = '%s.s3.%s.amazonaws.com' % (AWS_STORAGE_BUCKET_NAME,AWS_REGION)
+# AWS_S3_SECURE_URLS = False
 # AWS_S3_OBJECT_PARAMETERS = {
-#     'CacheControl': 'max-age=86400',
+#    'CacheControl': 'max-age=86400',
 # }
 # AWS_DEFAULT_ACL = 'public-read'
 # AWS_LOCATION = 'static'
 #
-# STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
+# STATIC_URL = 'http://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
 # STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+# DEFAULT_FILE_STORAGE = 'config.asset_storage.MediaStorage'
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticsfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 MEDIA_URL = '/media/'  # url 경로로 /media/ 설정
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')   # url 경로로 media 설정한게 아니라 media 폴더 생성
@@ -160,3 +167,25 @@ LOGIN_URL = reverse_lazy('accounts:signin')
 # django.contrib.sites : 우리 프로젝트 사이트 정보 관리 --> migrate 필요
 DISQUS_WEBSITE_SHORTNAME = 'firstdstagram'
 SITE_ID = 1
+
+INTERNAL_IPS = ['127.0.0.1']
+
+DEBUG_TOOLBAR_PANELS = [
+    'debug_toolbar.panels.versions.VersionsPanel',
+    'debug_toolbar.panels.timer.TimerPanel',
+    'debug_toolbar.panels.settings.SettingsPanel',
+    'debug_toolbar.panels.headers.HeadersPanel',
+    'debug_toolbar.panels.request.RequestPanel',
+    'debug_toolbar.panels.sql.SQLPanel',
+    'debug_toolbar.panels.staticfiles.StaticFilesPanel',
+    'debug_toolbar.panels.templates.TemplatesPanel',
+    'debug_toolbar.panels.cache.CachePanel',
+    'debug_toolbar.panels.signals.SignalsPanel',
+    'debug_toolbar.panels.logging.LoggingPanel',
+    'debug_toolbar.panels.redirects.RedirectsPanel',
+]
+
+GRAPH_MODELS = {
+    'all_applications':True,  # 전체 관계도 생성
+    'group_models':True,  # 전체 관계도의 그룹 형태 표시
+}

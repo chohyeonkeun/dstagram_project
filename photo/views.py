@@ -128,22 +128,27 @@ class PhotoLike(View):
             # kwargs['photo_id']
             # 2. 누가?
             '''
-            user
+            USER
             id username ....
             1   admin
             2   baepeu
             
-            photo
+            Photo
             id  author_id ...
             1    1
             2    1
             
-            like
+            like (ManyToManyField)
             id  photo_id  user_id
             1       1      1
             2       1      2
             3       2      1
             4       2      2
+            
+            submit 
+            id  program_id  user_id
+            1     
+            
             '''
             if 'photo_id' in kwargs:
                 photo_id = kwargs['photo_id']
@@ -153,10 +158,9 @@ class PhotoLike(View):
                     photo.like.remove(user)
                 else:
                     photo.like.add(user)
-            referer_url = request.META.get('HTTP_REFERER')
+            referer_url = request.META.get('HTTP_REFERER')  # 요청한 사용자의 referer 받아옴
             path = urlparse(referer_url).path
             return HttpResponseRedirect(path)
-        # LOGIN_URL = reverse_lazy('accounts:signin')
 
 # 함수형 뷰일 때는 def photosaved(request,photo_id)
 class PhotoSaved(View):
@@ -184,9 +188,15 @@ id  photo_id  user
 
 '''
 
-class PhotoSaveList(ListView):
+class PhotoSaveList(LoginRequiredMixin, ListView):
     model = Photo
-    template_name_suffix = '_saved'
+    template_name = 'photo/photo_list.html'
+
+    def get_queryset(self):  # SQL 에서 SELECT 문과 비슷하다.
+        # 로그인한 유저가 북마크 저장한 posts을 찾아서 반환
+        user = self.request.user
+        queryset = user.saved_post.all()
+        return queryset
 
 
 
@@ -195,7 +205,7 @@ class PhotoLikeList(LoginRequiredMixin, ListView):
     template_name = 'photo/photo_list.html'
 
     def get_queryset(self):  # SQL 에서 SELECT 문과 비슷하다.
-        # 로그인한 유저가 좋아요를 클릭한 글을 찾아서 반환
+        # 로그인한 유저가 좋아요 클릭한 posts을 찾아서 반환
         user = self.request.user
         queryset = user.like_post.all()
         return queryset
@@ -209,3 +219,33 @@ class PhotoMylist(ListView):
         user = self.request.user
         queryset = user.photos.all()
         return queryset
+
+from django.db.models.signals import post_delete
+from django.dispatch import receiver
+
+import boto3
+from django.conf import settings
+
+@receiver(post_delete, sender=Photo)
+def post_delete(sender, instance, **kwargs):  # 메서드 이름은 상관없다. **kwargs만 붙여라
+    # s3 연결한 다음에 object의 사진 지울 것
+    # instance 는 그 포스트의 메모리 주소
+    storage = instance.image.storage
+    # s3에 저장된 데이터들은 path로 찾을 수 없고, key 로 찾아야 한다.
+    if storage.exists(str(instance.image)):  # media storage가 "media/" 붙여서 만들어준다.
+        storage.delete(str(instance.image))
+
+    #
+    # session = boto3.Session(
+    #     aws_access_key_id = settings.AWS_ACCESS_KEY_ID,
+    #     aws_secret_access_key = settings.AWS_SECRET_ACCESS_KEY,
+    #     region_name = settings.AWS_REGION
+    # )
+    #
+    # s3 = session.resource('s3')
+    #
+    # # s3.Object는 s3에 업로드된 파일 객체를 얻어오는 클래스
+    # # arg1 = 버킷네임
+    # # arg2 = 파일 경로 - Key (버킷 실제 경로는 media/ 에 있으므로 "media/" 추가)
+    # image = s3.Object(settings.AWS_STORAGE_BUCKET_NAME, "media/" + str(instance.image))
+    # image.delete()
