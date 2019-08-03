@@ -36,9 +36,6 @@
       <change afterPath="$PROJECT_DIR$/../crawler_example/assignment_movie_rank.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../custom_user_project/account/backends.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../custom_user_project/config/s3media.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/asset_storage.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/s3_upload.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/secret.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../editor_project/.gitignore" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../editor_project/post/templates/post/create.html" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../editor_project/post/urls.py" afterDir="false" />
@@ -83,35 +80,6 @@
       <change beforePath="$PROJECT_DIR$/../bookmark_project/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../bookmark_project/requirements.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../crawler_example/example01_naver_search_keyword.py" beforeDir="false" afterPath="$PROJECT_DIR$/../crawler_example/example01_naver_search_keyword.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../crawler_example/example_daum_stock_1.py" beforeDir="false" afterPath="$PROJECT_DIR$/../crawler_example/example_daum_stock_1.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dstagram_project.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dstagram_project.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/config/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/config/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/layout/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/layout/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/timeline_photo/2019/05.02/dog.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/timeline_photo/2019/05.03/bodol_haru.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/timeline_photo/2019/05.03/haru.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/timeline_photo/2019/05.03/haru2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/timeline_photo/2019/05.03/haru3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/timeline_photo/2019/05.03/me.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/timeline_photo/2019/05.03/me2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/timeline_photo/2019/05.04/IQ_TEST1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/timeline_photo/2019/05.04/IQ_TEST2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/timeline_photo/2019/05/01/download_A5pIQbo.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/photo/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/photo/migrations/0002_auto_20190501_0504.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/photo/migrations/0003_auto_20190502_1353.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/photo/migrations/0004_photo_save.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/photo/migrations/0005_auto_20190502_2136.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/photo/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/photo/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/photo/templates/photo/photo_saved.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/photo/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/photo/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/photo/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/photo/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
