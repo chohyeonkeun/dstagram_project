@@ -1,10 +1,11 @@
 import boto3 # s3에 파일을 업로드 하는 용도
 import os # 현재 업로드할 파일 탐색
+from secret import aws_info
 
 def upload_files(search_path, target_path):
    session = boto3.Session(
-       aws_access_key_id='AKIAZR3IWTCZWC4AV645',
-       aws_secret_access_key='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',
+       aws_access_key_id=aws_info['id'],
+       aws_secret_access_key=aws_info['key'],
        region_name='ap-northeast-2'
    )
 
